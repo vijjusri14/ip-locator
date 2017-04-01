@@ -2,16 +2,16 @@ importScripts('resources/cache-polyfill/cache-polyfill.js');
 self.addEventListener('install', function (e) {
     e.waitUntil(caches.open('iplocator').then(function (cache) {
         return cache.addAll([
-            '/', 
-            '/index.html', 
-            '/resources/css/style.css', 
-            '/resources/images/icon.svg', 
-            '/resources/jquery/jquery.min.js', 
-            '/resources/dialog-polyfill/dialog-polyfill.css', 
-            '/resources/dialog-polyfill/dialog-polyfill.js', 
-            '/resources/js/app.js', 
-            '/resources/mdl/material.deep_orange-orange.min.css', 
-            '/resources/mdl/material.min.js'
+            '/ip-locator/', 
+            '/ip-locator/index.html', 
+            '/ip-locator/resources/css/style.css', 
+            '/ip-locator/resources/images/icon.svg', 
+            '/ip-locator/resources/jquery/jquery.min.js', 
+            '/ip-locator/resources/dialog-polyfill/dialog-polyfill.css', 
+            '/ip-locator/resources/dialog-polyfill/dialog-polyfill.js', 
+            '/ip-locator/resources/js/app.js', 
+            '/ip-locator/resources/mdl/material.deep_orange-orange.min.css', 
+            '/ip-locator/resources/mdl/material.min.js'
         ]);
     }));
 });
