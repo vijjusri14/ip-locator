@@ -3,15 +3,15 @@ self.addEventListener('install', function (e) {
     e.waitUntil(caches.open('iplocator').then(function (cache) {
         return cache.addAll([
             '/', 
-            'index.html', 
-            'resources/css/style.css', 
-            'resources/images/icon.svg', 
-            'resources/jquery/jquery.min.js', 
-            'resources/dialog-polyfill/dialog-polyfill.css', 
-            'resources/dialog-polyfill/dialog-polyfill.js', 
-            'resources/js/app.js', 
-            'resources/mdl/material.deep_orange-orange.min.css', 
-            'resources/mdl/material.min.js'
+            '/index.html', 
+            '/resources/css/style.css', 
+            '/resources/images/icon.svg', 
+            '/resources/jquery/jquery.min.js', 
+            '/resources/dialog-polyfill/dialog-polyfill.css', 
+            '/resources/dialog-polyfill/dialog-polyfill.js', 
+            '/resources/js/app.js', 
+            '/resources/mdl/material.deep_orange-orange.min.css', 
+            '/resources/mdl/material.min.js'
         ]);
     }));
 });
