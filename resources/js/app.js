@@ -1,7 +1,7 @@
 //Google Maps
 var mlat = 0;
 var mlon = 0;
-var isp = null;
+var asn = null;
 
 function initMap() {
     var location = {
@@ -19,7 +19,7 @@ function initMap() {
         draggable: false,
         animation: google.maps.Animation.DROP,
         position: location,
-        title: isp
+        title: asn
     });
     marker.addListener('click', function toggleBounce() {
         marker.getAnimation() !== null ? marker.setAnimation(null) : marker.setAnimation(google.maps.Animation.BOUNCE);
@@ -34,9 +34,9 @@ function CamelCase(str) {
 //Get Table Data
 function GetGeoData() {
     $("#wait").addClass("is-active");
-    var uri = "http://ip-api.com/json/";
+    var uri = "https://ip.nf/";
     var ip = $("#ip").val();
-    ip == null ? uri += "?callback=?" : uri += ip;
+    (ip == null) || (ip == "") ? uri += "me.json": uri = uri + ip + ".json";
     $.ajax({
         url: uri,
         dataType: 'json',
@@ -46,19 +46,18 @@ function GetGeoData() {
 }
 //Update Table
 function CreateTable(data) {
-    if (data.status == "success") {
-        $("#aip").html("<b>" + data.query + "</b>");
-        $("#aisp").html("<b>" + data.isp + "</b>");
-        $("#aorg").html("<b>" + data.org + "</b>");
-        $("#alat").html("<b>" + data.lat + "</b>");
-        $("#alon").html("<b>" + data.lon + "</b>");
-        $("#acity").html("<b>" + data.city + "</b>");
-        $("#aregion").html("<b>" + data.regionName + "</b>");
-        $("#acountry").html("<b>" + data.country + "</b>");
-        $("#atimezone").html("<b>" + data.timezone + "</b>");
-        mlat = data.lat;
-        mlon = data.lon;
-        isp = data.isp;
+    if (data.ip.ip !== null) {
+        $("#aip").html("<b>" + data.ip.ip + "</b>");
+        $("#aasn").html("<b>" + data.ip.asn + "</b>");
+        $("#alat").html("<b>" + data.ip.latitude + "</b>");
+        $("#alon").html("<b>" + data.ip.longitude + "</b>");
+        $("#acity").html("<b>" + data.ip.city + "</b>");
+        $("#acountry").html("<b>" + data.ip.country + "</b>");
+        $("#acountrycode").html("<b>" + data.ip.country_code + "</b>");
+        $("#azipcode").html("<b>" + data.ip.post_code + "</b>");
+        mlat = data.ip.latitude;
+        mlon = data.ip.longitude;
+        asn = data.ip.asn;
         $("#in").css("display", "auto");
         $("#in").css("height", "auto");
         $("#hero").show();
@@ -68,7 +67,7 @@ function CreateTable(data) {
         var toast = document.querySelector("#message");
         $("#wait").removeClass("is-active");
         var msg = {
-            message: CamelCase(data.message)
+            message: CamelCase("oops...! Something went wrong")
         };
         toast.MaterialSnackbar.showSnackbar(msg);
     }
