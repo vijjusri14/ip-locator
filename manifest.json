@@ -13,7 +13,7 @@
     "theme_color": "#ff5722",
     "background_color": "#ff5722",
     "display": "standalone",
-    "Scope": "/",
-    "start_url": "/",
+    "Scope": "/ip-locator",
+    "start_url": "/ip-locator",
     "splash_pages": null
 }
