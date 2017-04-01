@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>IP Locator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="Locate IP address on map">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="resources/mdl/material.deep_orange-orange.min.css">
+    <link rel="stylesheet" href="resources/css/style.css">
+    <link rel="stylesheet" href="resources/dialog-polyfill/dialog-polyfill.css" />
+    <script defer src="resources/mdl/material.min.js"></script>
+    <script src="resources/jquery/jquery.min.js"></script>
+    <meta name="apple-mobile-web-app-title" content="IP Locator">
+    <meta name="application-name" content="IP Locator">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" sizes="60x60" href="icons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="icons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="icons/favicon-194x194.png" sizes="194x194">
+    <link rel="icon" type="image/png" href="icons/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="icons/favicon-16x16.png" sizes="16x16">
+    <link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#ff5722">
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <meta name="msapplication-TileColor" content="#ff5722">
+    <meta name="msapplication-TileImage" content="icons/mstile-144x144.png">
+    <meta name="theme-color" content="#ff5722"> </head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row"><span class="mdl-layout-title"><img id="logo" alt="iplocator" src="resources/images/icon.svg">IP Locator</span>
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation">
+                    <button id="help" class="mdl-button mdl-js-button mdl-button--icon mdl-button--raised mdl-js-ripple-effect mdl-button--accent">? </button>
+                    <div class="mdl-tooltip" data-mdl-for="help"> Help </div>
+                </nav>
+                <dialog class="mdl-dialog">
+                    <h5 class="mdl-dialog__title">What is IP?</h5>
+                    <div class="mdl-dialog__content">
+                        <p>An IP address (short for Internet Protocol address) is used to identify computers on the Internet. It works like a return address would on a piece of mail.</p>
+                        <h5>How IP addresses work</h5>
+                        <p>When your computer or device sends a request, like a search on Google, it tags the request with your IP address. That way Google knows where to send the response.</p>
+                        <h5>What an IP address looks like</h5>
+                        <p>Your IP address will be a number, like 172.16.254.1 or 2001:db8:0:1234:0:567:8:1.</p>
+                    </div>
+                    <div class="mdl-dialog__actions">
+                        <button type="button" class="mdl-button close">GOT IT</button>
+                    </div>
+                </dialog>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="center">
+                <div id="in">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input id="ip" class="mdl-textfield__input" type="text">
+                        <label class="mdl-textfield__label" for="ip">IP to Locate</label> <span class="mdl-textfield__error">Not a valid IP!</span> </div>
+                    <button id="locate" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect"> Locate </button>
+                </div>
+                <div id="wait" class="mdl-spinner mdl-js-spinner"></div>
+                <div id="message" class="mdl-js-snackbar red mdl-snackbar">
+                    <div class="mdl-snackbar__text"></div>
+                    <button class="mdl-snackbar__action" type="button"></button>
+                </div>
+                <div id="warning" class="mdl-js-snackbar red mdl-snackbar">
+                    <div class="mdl-snackbar__text"></div>
+                    <button class="mdl-snackbar__action" type="button"></button>
+                </div>
+                <div id="hero">
+                    <div id="map"></div> &nbsp;&nbsp;
+                    <div id="GeoData">
+                        <table id="GeoResults" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                            <thead>
+                                <tr>
+                                    <th class="mdl-data-table__cell--non-numeric"><b>Item</b></th>
+                                    <th><b>Description</b></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="mdl-data-table__cell--non-numeric">IP</td>
+                                    <td id="aip"></td>
+                                </tr>
+                                <tr>
+                                    <td class="mdl-data-table__cell--non-numeric">ISP</td>
+                                    <td id="aisp"></td>
+                                </tr>
+                                <tr>
+                                    <td class="mdl-data-table__cell--non-numeric">Organization</td>
+                                    <td id="aorg"></td>
+                                </tr>
+                                <tr>
+                                    <td class="mdl-data-table__cell--non-numeric">Lattitute</td>
+                                    <td id="alat"></td>
+                                </tr>
+                                <tr>
+                                    <td class="mdl-data-table__cell--non-numeric">Longitude</td>
+                                    <td id="alon"></td>
+                                </tr>
+                                <tr>
+                                    <td class="mdl-data-table__cell--non-numeric">City</td>
+                                    <td id="acity"></td>
+                                </tr>
+                                <tr>
+                                    <td class="mdl-data-table__cell--non-numeric">Region</td>
+                                    <td id="aregion"></td>
+                                </tr>
+                                <tr>
+                                    <td class="mdl-data-table__cell--non-numeric">Country</td>
+                                    <td id="acountry"></td>
+                                </tr>
+                                <tr>
+                                    <td class="mdl-data-table__cell--non-numeric">Timezone</td>
+                                    <td id="atimezone"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="resources/dialog-polyfill/dialog-polyfill.js"></script>
+    <script src="resources/js/app.js"></script>
+    <script defer async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApJx7-tEwurmVWO-7ZiXW_42-Zzc_jHPs&v=3.exp&callback=initMap"></script>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+body{
+    background-color: darkgray;
+}
+
+.center {
+    text-align: center;
+    padding: 20px;
+    height: calc(100vh - 104px);
+}
+
+#logo {
+    width: 48px;
+    padding-right: 10px;
+}
+
+#in {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 67px;
+    display: inline-block;
+}
+
+#wait {
+    position: absolute;
+    margin: auto;
+    top: 100px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: inline-block;
+}
+
+.mdl-dialog {
+    width: 50%
+}
+
+.close {
+    color: orangered;
+}
+
+#GeoData {
+    display: inline-block;
+}
+
+#GeoResults {
+    width: 500px;
+}
+
+#map {
+    height: 481px;
+    width: calc(100vw - 600px);
+    padding-left: 10px;
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.75);
+    display: inline-block;
+}
+
+#hero {
+    margin-top: 50px;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    #GeoData {
+        width: calc(100% - 10px);
+    }
+    #GeoResults {
+        width: 100%;
+    }
+    #map {
+        height: 200px;
+        margin-top: 5px;
+        padding-left: 0;
+        width: calc(100% - 10px);
+        display: inline-block;
+    }
+    .mdl-dialog {
+        width: 90%
+    }
+    .mdl-layout-title {
+        left: calc(10% - 90px);
+    }
+}
