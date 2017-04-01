@@ -1,4 +1,4 @@
-importScripts('/resources/cache-polyfill/cache-polyfill.js');
+importScripts('resources/cache-polyfill/cache-polyfill.js');
 self.addEventListener('install', function (e) {
     e.waitUntil(caches.open('iplocator').then(function (cache) {
         return cache.addAll([
