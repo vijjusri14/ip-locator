@@ -1,4 +1,4 @@
-importScripts('/resources/cache-polyfill/cache-polyfill.js');
+importScripts('resources/cache-polyfill/cache-polyfill.js');
 self.addEventListener('install', function (e) {
     e.waitUntil(caches.open('iplocator').then(function (cache) {
         return cache.addAll([
@@ -9,7 +9,6 @@ self.addEventListener('install', function (e) {
             '/resources/jquery/jquery.min.js', 
             '/resources/dialog-polyfill/dialog-polyfill.css', 
             '/resources/dialog-polyfill/dialog-polyfill.js', 
-            '/resources/jquery/jquery.min.js', 
             '/resources/js/app.js', 
             '/resources/mdl/material.deep_orange-orange.min.css', 
             '/resources/mdl/material.min.js'
