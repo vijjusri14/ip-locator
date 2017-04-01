@@ -16,7 +16,7 @@ A simple JSON file that must follow the specification available on [W3C](https:/
 Built using traditional HTML5 with [Google's MDL](https://getmdl.io/), CSS3 @media queries for responsive design and JQuery that simulates the retrieval of data from the API by AJAX JSON get calls.
 
 ### API
-The JSON API of [http://ip-api.com/json/](http://ip-api.com/json/) is used for gathering geo-loction data.
+The JSON API of [https://ip.nf](https://ip.nf/) is used for gathering geo-loction data.
 Google Maps JavaScript API to display the gathered geo-loction data on map.
 
 ## Demo
