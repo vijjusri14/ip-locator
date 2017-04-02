@@ -1,7 +1,7 @@
 # IP Locator
 [![IP-Locator](https://github.com/vijjusri14/ip-locator/raw/master/resources/images/icon.png)](https://vijjusri14.github.io/ip-locator)
 
-IP Locator is a simple progressive web application to geo-locate an IP address it demonstrates the use of Google's Material Design Light, Google Maps JavaScript API and ip-api.com JSON API and implements Service Workers, Cache API and offline functionality; the use of a Manifest for Web and Add to Homescreen.
+IP Locator is a simple progressive web application to geo-locate an IP address it demonstrates the use of Google's Material Design Light, Google Maps JavaScript API and ip.nf JSON API and implements Service Workers, Cache API and offline functionality; the use of a Manifest for Web and Add to Homescreen.
 
 ## Progressive Web Apps
 Progressive Web Applications take advantage of the latest technologies to combine the best of web and mobile apps; think of it as a website built using web technologies but which acts and feels like an app. Recent advancements in the browser and the availability of service workers, the Cache and the Push APIs, have given web developers the possibility to install web apps to the home screen, receive push notifications and even work offline.
