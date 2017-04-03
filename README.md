@@ -20,4 +20,4 @@ The JSON API of [https://ip.nf](https://ip.nf/) is used for gathering geo-loctio
 Google Maps JavaScript API to display the gathered geo-loction data on map.
 
 ## Demo
-Demo: [https://vijjusri14.github.io/ip-location/](https://vijjusri14.github.io/ip-location/)
+Demo: [https://vijjusri14.github.io/ip-locator/](https://vijjusri14.github.io/ip-locator/)
