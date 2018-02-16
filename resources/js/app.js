@@ -49,6 +49,7 @@ function CreateTable(data) {
     if (data.ip.ip !== null) {
         $("#aip").html("<b>" + data.ip.ip + "</b>");
         $("#aasn").html("<b>" + data.ip.asn + "</b>");
+        $("#ahostname").html("<b>" + data.ip.hostname + "</b>");
         $("#alat").html("<b>" + data.ip.latitude + "</b>");
         $("#alon").html("<b>" + data.ip.longitude + "</b>");
         $("#acity").html("<b>" + data.ip.city + "</b>");
